@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <data>
+        <variable
+            name="asteroid"
+            type="com.udacity.asteroidradar.domain.Asteroid" />
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="#FFFFFF">
+
+
 
     <TextView
         android:id="@+id/item_name"
@@ -14,6 +24,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="68347 ( 2001 KB67)"
+        android:text="@{asteroid.codename}"
         />
 
     <TextView
@@ -24,6 +35,7 @@
         app:layout_constraintStart_toStartOf="@id/item_name"
         app:layout_constraintTop_toBottomOf="@+id/item_name"
         tools:text="2020-02-08"
+        android:text="@{asteroid.closeApproachDate}"
         />
 
     <ImageView
@@ -33,7 +45,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:statusIcon="@{asteroid.potentiallyHazardous}"
         tools:srcCompat="@drawable/ic_status_potentially_hazardous"
 
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
