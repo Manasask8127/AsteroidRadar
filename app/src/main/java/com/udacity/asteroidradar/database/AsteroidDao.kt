@@ -8,12 +8,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import timber.log.Timber
+
 
 @Dao
 interface AsteroidDao{
 
     @Query("select * from databaseasteroid order by closeApproachDate ASC")
-    fun getAsteroids() : LiveData<List<DatabaseAsteroid>>
+    fun getAsteroids() : List<DatabaseAsteroid>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg asteroids:DatabaseAsteroid)
@@ -21,6 +23,9 @@ interface AsteroidDao{
     //Add-on
     @Query("delete from databaseasteroid where closeApproachDate<:presentDate")
     fun deletePastAsteroids(presentDate : String)
+
+    @Query("select * from databaseasteroid where closeApproachDate>=:startDate and closeApproachDate<=:endDate order by closeApproachDate asc")
+    fun getAsteroidByClosingDate(startDate:String,endDate:String):List<DatabaseAsteroid>
 
 }
 
@@ -57,6 +62,7 @@ private val roomCallback=object :RoomDatabase.Callback(){
 suspend fun addDummyContent(){
     withContext(Dispatchers.IO){
         INSTANCE.asteroidDao.insertAll(*getDummyContents().toTypedArray())
+       // Timber.d(INSTANCE.asteroidDao.getAsteroids().toString())
     }
 }
 private fun getDummyContents():ArrayList<DatabaseAsteroid>{
