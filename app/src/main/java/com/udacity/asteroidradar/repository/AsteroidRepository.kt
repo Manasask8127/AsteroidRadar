@@ -28,6 +28,7 @@ class AsteroidRepository(private val asteroidDatabase: AsteroidDatabase) {
 //            it.asDomainModel()
 //        }
 
+    //error while loading need to resolve
     suspend fun refreshAsteroids() {
         var asteroids: ArrayList<Asteroid>
         withContext(Dispatchers.IO) {
