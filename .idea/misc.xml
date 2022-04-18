@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Kotlin Projects 2/Asteroid Radar App/nd940-android-kotlin-c2-starter-master/starter/app/src/main/res/drawable/ic_status_normal.xml" value="0.10885416666666667" />
+        <entry key="..\:/Kotlin Projects 2/Asteroid Radar App/nd940-android-kotlin-c2-starter-master/starter/app/src/main/res/drawable/ic_status_potentially_hazardous.xml" value="0.10885416666666667" />
+        <entry key="..\:/Kotlin Projects 2/Asteroid Radar App/nd940-android-kotlin-c2-starter-master/starter/app/src/main/res/drawable/placeholder_picture_of_day.xml" value="0.10885416666666667" />
         <entry key="..\:/Kotlin Projects 2/Asteroid Radar App/nd940-android-kotlin-c2-starter-master/starter/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Kotlin Projects 2/Asteroid Radar App/nd940-android-kotlin-c2-starter-master/starter/app/src/main/res/layout/asteroid_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Kotlin Projects 2/Asteroid Radar App/nd940-android-kotlin-c2-starter-master/starter/app/src/main/res/layout/fragment_detail.xml" value="0.20416666666666666" />

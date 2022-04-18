@@ -13,7 +13,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FFFFFF">
+    android:layout_marginTop="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginBottom="16dp">
 
 
 
@@ -24,6 +27,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="68347 ( 2001 KB67)"
+        android:textColor="@color/default_text_color"
         android:text="@{asteroid.codename}"
         />
 
@@ -34,6 +38,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/item_name"
         app:layout_constraintTop_toBottomOf="@+id/item_name"
+        android:textColor="@color/default_text_color"
         tools:text="2020-02-08"
         android:text="@{asteroid.closeApproachDate}"
         />
