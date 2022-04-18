@@ -18,6 +18,7 @@ import com.udacity.asteroidradar.getToday
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.ResponseBody
+import org.json.JSONException
 import org.json.JSONObject
 import timber.log.Timber
 import java.lang.Exception
@@ -32,10 +33,15 @@ class AsteroidRepository(private val asteroidDatabase: AsteroidDatabase) {
     suspend fun refreshAsteroids() {
         var asteroids: ArrayList<Asteroid>
         withContext(Dispatchers.IO) {
-            val asteroidsBody: ResponseBody = NeoWs.retrofitService.getAsteroids()
-            asteroids = parseAsteroidsJsonResult(JSONObject(asteroidsBody.string()))
-            asteroidDatabase.asteroidDao.insertAll(*asteroids.asDatabaseModel())
-
+            try {
+                val asteroidsBody: ResponseBody = NeoWs.retrofitService.getAsteroids()
+                asteroids = parseAsteroidsJsonResult(JSONObject(asteroidsBody.string()))
+                asteroidDatabase.asteroidDao.insertAll(*asteroids.asDatabaseModel())
+            }
+            catch (exception:JSONException)
+            {
+                Timber.d("Exception occured $exception")
+            }
         }
     }
 
@@ -76,5 +82,11 @@ class AsteroidRepository(private val asteroidDatabase: AsteroidDatabase) {
             asteroids=asteroidDatabase.asteroidDao.getAsteroids()
         }
         return asteroids!!.asDomainModel()
+    }
+
+    suspend fun deletePastAsteroids(){
+        withContext(Dispatchers.IO){
+            asteroidDatabase.asteroidDao.deletePastAsteroids(getToday())
+        }
     }
 }
