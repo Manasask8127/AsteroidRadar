@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.adapter.AsteroidAdapter
 import com.udacity.asteroidradar.databinding.FragmentMainBinding
@@ -43,9 +44,19 @@ class MainFragment : Fragment() {
             }
         })
 
-        viewModel.connectToNetwork.observe(viewLifecycleOwner, Observer {
-            if(it==true)
-                Toast.makeText(requireContext(),"network connection back", Toast.LENGTH_SHORT).show()
+//        viewModel.connectToNetwork.observe(viewLifecycleOwner, Observer {
+//            if(it==false)
+//                viewModel.checkNetworkAndRefresh()
+//        })
+
+        viewModel.showSnackBar.observe(viewLifecycleOwner, Observer {
+            if(it==true){
+                val snackbar=Snackbar.make(binding.mainFragmentLayout,"Refresh",Snackbar.LENGTH_INDEFINITE)
+                snackbar.setAction("Refresh"){
+                    viewModel.checkNetworkAndRefresh()
+                }
+                snackbar.show()
+            }
         })
 
         return binding.root
