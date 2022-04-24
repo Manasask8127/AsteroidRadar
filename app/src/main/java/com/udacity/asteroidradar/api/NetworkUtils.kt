@@ -1,5 +1,8 @@
 package com.udacity.asteroidradar.api
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Build
 import com.udacity.asteroidradar.domain.Asteroid
 import com.udacity.asteroidradar.Constants
@@ -59,4 +62,10 @@ private fun getNextSevenDaysFormattedDates(): ArrayList<String> {
     }
 
     return formattedDateList
+}
+
+fun checKNetwork(context: Context):Boolean{
+    val connectivityManager=context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val networkInfo: NetworkInfo? =connectivityManager.activeNetworkInfo
+    return networkInfo?.isConnected ==true
 }

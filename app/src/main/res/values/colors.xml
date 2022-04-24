@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#010613</color>
-    <color name="colorPrimaryDark">#010613</color>
+    <color name="colorPrimaryVariant">#010613</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+
+    <color name="colorSecondary">#FFFFFF</color>
+    <color name="colorSecondaryVariant">#FFFFFF</color>
+    <color name="colorOnSecondary">#010613</color>
+
     <color name="colorAccent">#FF8282</color>
     <color name="app_background">#010613</color>
     <color name="default_text_color">#FFFFFF</color>

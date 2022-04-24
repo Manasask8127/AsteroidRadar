@@ -29,6 +29,7 @@
         tools:text="68347 ( 2001 KB67)"
         android:textColor="@color/default_text_color"
         android:text="@{asteroid.codename}"
+        style="@style/asteroidTextView"
         />
 
     <TextView
@@ -41,6 +42,7 @@
         android:textColor="@color/default_text_color"
         tools:text="2020-02-08"
         android:text="@{asteroid.closeApproachDate}"
+        style="@style/asteroidTextView"
         />
 
     <ImageView

@@ -44,20 +44,8 @@ class MainFragment : Fragment() {
             }
         })
 
-//        viewModel.connectToNetwork.observe(viewLifecycleOwner, Observer {
-//            if(it==false)
-//                viewModel.checkNetworkAndRefresh()
-//        })
 
-        viewModel.showSnackBar.observe(viewLifecycleOwner, Observer {
-            if(it==true){
-                val snackbar=Snackbar.make(binding.mainFragmentLayout,"Refresh",Snackbar.LENGTH_INDEFINITE)
-                snackbar.setAction("Refresh"){
-                    viewModel.checkNetworkAndRefresh()
-                }
-                snackbar.show()
-            }
-        })
+
 
         return binding.root
     }

@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.udacity.asteroidradar.PictureOfDay
+import com.udacity.asteroidradar.api.checKNetwork
 import com.udacity.asteroidradar.database.getDatabase
 import com.udacity.asteroidradar.domain.Asteroid
 import com.udacity.asteroidradar.repository.AsteroidRepository
@@ -20,9 +21,6 @@ class MainViewModel(val application: Application):ViewModel() {
     private val database=getDatabase(application)
      private val repository=AsteroidRepository(database)
 
-    private  val _connectToNetwork=MutableLiveData<Boolean>()
-    val connectToNetwork:LiveData<Boolean>
-    get() = _connectToNetwork
 
     private var _navigateToDetails= MutableLiveData<Asteroid>()
 
@@ -82,14 +80,14 @@ class MainViewModel(val application: Application):ViewModel() {
 
     fun checkNetworkAndRefresh()
     {
-        _connectToNetwork.value=false
+        //_connectToNetwork.value=false
         refreshAsteroids()
         refreshPicture()
     }
 
     fun refreshPicture(){
-        checKNetwork()
-        if(connectToNetwork.value==true)
+        //checKNetwork()
+        if(checKNetwork(application))
         {
             viewModelScope.launch {
                 _pictureOfDay.value=repository.refreshPicture()
@@ -98,22 +96,20 @@ class MainViewModel(val application: Application):ViewModel() {
     }
 
     fun refreshAsteroids(){
-        checKNetwork()
-        if(connectToNetwork.value==true)
+        //checKNetwork()
+        if(checKNetwork(application)) {
             viewModelScope.launch {
                 repository.refreshAsteroids()
             }
+        }
         else{
-            _showSnackBar.value=true
             Toast.makeText(application,"No network connection",Toast.LENGTH_SHORT).show()
         }
     }
 
-    fun checKNetwork(){
-        val connectivityManager=application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val networkInfo: NetworkInfo? =connectivityManager.activeNetworkInfo
-        _connectToNetwork.value= networkInfo?.isConnected
-    }
+
+
+
 
 
 
