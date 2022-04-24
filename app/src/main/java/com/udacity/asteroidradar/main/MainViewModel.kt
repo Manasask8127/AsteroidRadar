@@ -31,10 +31,6 @@ class MainViewModel(val application: Application):ViewModel() {
     val pictureOfDay:LiveData<PictureOfDay>
     get() = _pictureOfDay
 
-    private val _showSnackBar=MutableLiveData<Boolean>()
-    val showSnackBar:LiveData<Boolean>
-        get() = _showSnackBar
-
 
 //    val asteroidList=repository.asteroids
 
