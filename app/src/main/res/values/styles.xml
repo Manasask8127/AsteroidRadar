@@ -16,4 +16,16 @@
     </style>
 
 
+    <style name="asteroidTitle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="asteroidSubTitle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+        <item name="android:textSize">15dp</item>
+    </style>
+
 </resources>
